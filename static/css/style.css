@@ -1,0 +1,140 @@
+html {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url(img/2.jpg);
+    background-size: 100%;
+    color: white;
+    font-family: 'Roboto';
+    height: 100%;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+header .logo {
+    margin: 1%;
+    font-weight: bolder;
+    font-size: 155%;
+}
+
+header .nav-bar {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 30%;
+    padding: 1%;
+}
+
+a {
+    color: white;
+}
+
+
+main {
+    margin-top: 1%;
+    padding: 0 2%;
+}
+
+main {
+    margin-top: 1%;
+    padding: 0 2%;
+        height: 70%;
+}
+
+.mainProfile {
+    display: flex;
+    justify-content: space-between;
+    height: 70%;
+}
+
+.mainProfile .column1 {
+    width: 23%;
+}
+
+.mainProfile .title {}
+
+.mainProfile .mainPicture {
+    height: 80%;
+    width: 100%;
+    margin-top: 10%;
+    background-color: rgb(113, 137, 216);
+    opacity: 0.5
+}
+
+.mainProfile .uploadImage {
+    float: left;
+    margin-top: 10%;
+    cursor: pointer;
+    font-family: 'Roboto';
+    font-size: 15;
+    color: white;
+    background: transparent;
+    padding: 8% 9%;
+    border-radius: 16px;
+    outline: none;
+    border: 1px white solid; 
+}
+
+.mainProfile .user_img {
+    height: 100%;
+    width: 100%;
+    margin-top: 0%;
+}
+
+.mainProfile .column2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+        width: 40%;
+    height: 135%;
+}
+
+.mainProfile .userInfo {
+    height: 73%;
+    width: 100%;
+    background-color: white;
+    opacity: 0.7
+}
+
+.mainProfile .settings {
+    margin-top: 10px;
+    font-size: 15px;
+        cursor: pointer;
+    font-family: 'Roboto';
+    color: white;
+    background: transparent;
+    padding: 4% 19%;
+    border-radius: 16px;
+    outline: none;
+    border: 1px white solid; 
+}
+
+.flash {
+margin-top: 40%;
+margin-right: 40%;
+padding: 2px;
+font-size: 15px;
+cursor: pointer;
+font-family: 'Roboto';
+}
+
+main .registration {
+    float: left;
+    margin-top: 50%;
+    cursor: pointer;
+    font-family: 'Roboto';
+    font-size: 15;
+    color: white;
+    background: transparent;
+    padding: 8% 9%;
+    border-radius: 16px;
+    outline: none;
+    border: 1px white solid; 
+}

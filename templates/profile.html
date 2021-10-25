@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>SPECTRUM</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='css/style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo">SPECTRUM</div>
+        <div class="nav-bar">
+            <a href="/" class="main">Главная</a>
+            <a href="/profile" class="profile">Профиль</a>
+            <a href="#" class="range">Рейтинг</a>
+            <a href="#" class="signIn">Выход</a>
+        </div>
+    </header>
+    <main>
+      <div class="mainProfile">
+       <div class="column1">
+        <div class="title">Профиль</div>
+        <div class="mainPicture">
+            <img class="user_img" src="{{ url_for('static', path='user_images/{}'.format((images[-1]))) }}"  />
+        </div>
+        
+        <form method="post" enctype="multipart/form-data">
+            <input type="file" name="file">
+            <input class="uploadImage" type="submit" name="upload_button" value="upload">
+        </form>
+
+        </div>
+        <div class="column2">
+            <div class="userInfo"></div>
+            <button class="settings">Настройки</button>
+        </div>
+        </div>
+    </main>
+</body>
+</html>

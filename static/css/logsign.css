@@ -1,0 +1,159 @@
+html {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url(img/2.jpg);
+    background-size: 100%;
+    color: white;
+    font-family: 'Roboto';
+    height: 100%;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+header .logo {
+    margin: 1%;
+    font-weight: bolder;
+    font-size: 155%;
+}
+
+header .nav-bar {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 30%;
+    padding: 1%;
+}
+
+a {
+    color: white;
+}
+
+.login {
+    width: 40%;
+    height: 5%;
+    margin-left: 8%;
+    margin-top: 5%;
+}
+
+.login .loggin {
+    font-family: 'Roboto';
+    font-size: 15;
+    padding: 2px;
+    border-radius: 6px;
+    width: 45%;
+    height: 50%;
+    border: 0;
+}
+
+.password1 {
+    width: 40%;
+    height: 5%;
+    margin-left: 8%;
+    margin-top: 15px;
+}
+
+.password1 .passwordd1 {
+    font-family: 'Roboto';
+    font-size: 15;
+    padding: 2px;
+    border-radius: 6px;
+    width: 45%;
+    height: 50%;
+    border: 0;
+}
+
+
+.password2 {
+    width: 40%;
+    height: 5%;
+    margin-left: 8%;
+    margin-top: 15px;
+}
+
+.password2 .passwordd2 {
+    font-family: 'Roboto';
+    font-size: 15;
+    padding: 2px;
+    border-radius: 6px;
+    width: 45%;
+    height: 50%;
+    border: 0;
+}
+
+
+.log_button {
+    width: 12%;
+    height: 20%;
+    margin-left: 8%;
+    margin-top: 15px;
+}
+
+.log_button .logg_button {
+    font-family: 'Roboto';
+    font-size: 15;
+    border-radius: 6px;
+    width: 100%;
+    height: 20%;
+    border-color:cornsilk;
+}
+
+
+
+
+.sign_login {
+    width: 40%;
+    height: 5%;
+    margin-left: 8%;
+    margin-top: 5%;
+}
+
+.sign_login .sign_loggin {
+    font-family: 'Roboto';
+    font-size: 15;
+    padding: 2px;
+    border-radius: 6px;
+    width: 45%;
+    height: 50%;
+    border: 0;
+}
+
+.password {
+    width: 40%;
+    height: 5%;
+    margin-left: 8%;
+    margin-top: 15px;
+}
+
+.password .passwordd {
+    font-family: 'Roboto';
+    font-size: 15;
+    padding: 2px;
+    border-radius: 6px;
+    width: 45%;
+    height: 50%;
+    border: 0;
+}
+
+.sign_button {
+    width: 7%;
+    height: 20%;
+    margin-left: 8%;
+    margin-top: 15px;
+}
+
+.sign_button .siggn_button {
+    font-family: 'Roboto';
+    font-size: 15;
+    border-radius: 6px;
+    width: 100%;
+    height: 20%;
+    border-color:cornsilk;
+}

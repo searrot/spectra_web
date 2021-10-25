@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>SPECTRUM</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='css/logsign.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="logo">SPECTRUM</div>
+        <div class="nav-bar">
+            <a href="/" class="main">Главная</a>
+            <a href="/profile" class="profile">Профиль</a>
+            <a href="#" class="range">Рейтинг</a>
+            <a href="/log" class="signUp">Регистрация</a>
+            <a href="/sign" class="signIn">Вход</a>
+        </div>
+    </header>
+    <main>
+        <form method="post" enctype="multipart/form-data">
+        <div class="login">
+                <input type="text" class="loggin" placeholder="Логин">
+        </div>
+        <div class="password1">
+                <input type="password" class="passwordd1" placeholder="Пароль">
+        </div>
+        <div class="password2">
+                <input type="password" class="passwordd2" placeholder="Повторите пароль">
+        </div>
+        <div class="log_button">
+                <input type="button" class="logg_button" value="Зарегистрироваться">
+        </div>
+        </form>
+    </main>
+</body>
+</html>
