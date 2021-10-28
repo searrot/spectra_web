@@ -1,13 +1,11 @@
-import os 
-import numpy as np
-import cv2
+'''from db import DataBase
 
-images = os.listdir('./static/user_images/')
-new = cv2.imread(f'./static/user_images/{images[1]}')
-last = cv2.imread(f'./static/user_images/{images[0]}')
+base = DataBase()
+base.connect()
 
-image = np.array(new)
-last = np.array(last)
+base.create_table()
 
-if np.array_equal(image, last):
-    print(1)
+base.return_ids()'''
+import uuid
+
+print(int(uuid.uuid4()))

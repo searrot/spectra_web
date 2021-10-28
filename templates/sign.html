@@ -21,22 +21,17 @@
         </div>
     </header>
     <main>
-        <div class="sign_login">
-            <form method="post" enctype="multipart/form-data">
-                <input type="text" class="sign_loggin" placeholder="Логин">
-            </form>
-        </div>
-        <div class="password">
-            <form method="post" enctype="multipart/form-data">
-                <input type="password" class="passwordd" placeholder="Пароль">
-            </form>
-        </div>
-        <div class="sign_button">
-            <form method="post" enctype="multipart/form-data">
-                <input type="button" class="siggn_button" value="Войти">
-            </form>
-        </div>
+        <form method="post" enctype="multipart/form-data">
+            <div class="sign_login">
+                <input type="text" class="sign_loggin" name="log" placeholder="Логин">
+            </div>
+            <div class="password1">
+                <input type="password" class="passwordd" name="pass1" placeholder="Пароль">
+            </div>
+            <div class="sign_button">
+                <input type="submit" class="siggn_button" value="Войти">
+            </div>
+        </form>
     </main>
 </body>
-
 </html>

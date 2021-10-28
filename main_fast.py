@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Request, UploadFile, File, Form
+from fastapi import FastAPI, Request, UploadFile, File, Form, Depends
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
@@ -10,15 +10,29 @@ import cv2
 import numpy as np
 import io
 from PIL import Image
-from typing import List
+from db import DataBase
+from sqlite3 import IntegrityError
 
 '''--------------------------------------------------------------------------------------------'''
 
 app = FastAPI()
 app.mount("/static", StaticFiles(directory="static"), name="static")
-IMAGES = './static/user_images/'
+IMAGES = './user_images/'
 templates = Jinja2Templates(directory="templates")
 extentions = ['jpg', 'jpeg', 'png', 'webp', 'bmp']
+user_id = None
+
+base = DataBase()
+base.connect()
+base.create_table()
+ids = base.get_ids()
+
+def create_id():
+    id = random.randint(1, 1000000)
+    if id not in ids:
+        return id
+    else:
+        create_id()
 
 '''--------------------------------------------------------------------------------------------'''
 
@@ -27,6 +41,22 @@ extentions = ['jpg', 'jpeg', 'png', 'webp', 'bmp']
 class Item(BaseModel):
     language = 'english'
 
+class Registrator(BaseModel):
+    log: str
+    pass1: str
+    pass2: str
+
+    @classmethod
+    def as_form(cls, log: str = Form(...), pass1: str = Form(...), pass2: str = Form(...)):
+        return cls(log=log, pass1=pass1, pass2=pass2)
+
+class Signer(BaseModel):
+    log: str
+    pass1: str
+
+    @classmethod
+    def as_form(cls, log: str = Form(...), pass1: str = Form(...)):
+        return cls(log=log, pass1=pass1)
 '''--------------------------------------------------------------------------------------------'''
 
 '''--------------------------------------------------------------------------------------------'''
@@ -43,10 +73,24 @@ async def get_webpage(request: Request):
 async def get_log_webpage(request: Request):
     return templates.TemplateResponse("log.html", {"request": request})
 
-@app.post('/log', response_model=BaseModel)
-async def get_login( nn: str = Form(...), nn1: str = Form(...), nn2: str = Form(...)):
-    print(nn,nn1,nn2)
-    
+@app.post('/log', response_class=HTMLResponse)
+async def get_login(request: Request, reg: Registrator = Depends(Registrator.as_form)):
+    log, pass1, pass2 = reg.log, reg.pass1, reg.pass2
+    if pass1 == pass2:
+        email = 'non'
+        id = create_id()
+        score = 0
+        password = pass1
+        try:
+            base.create_user(id, log, password, score, email)
+            os.mkdir(f'{IMAGES}{id}')
+        except IntegrityError:
+            return templates.TemplateResponse("log.html", {"request": request})
+        global ids
+        ids = base.get_ids()
+        return templates.TemplateResponse("main.html", {"request": request})
+    else:
+        pass
 '''--------------------------------------------------------------------------------------------'''
 
 '''--------------------------------------------------------------------------------------------'''
@@ -55,10 +99,15 @@ async def get_login( nn: str = Form(...), nn1: str = Form(...), nn2: str = Form(
 async def get_sign_webpage(request: Request):
     return templates.TemplateResponse("sign.html", {"request": request})
 
-@app.post('/sign', response_model=BaseModel)
-async def get_sign(nn: str = Form(...)):
-    pass
-
+@app.post('/sign', response_class=HTMLResponse)
+async def get_sign(request: Request, sign: Signer = Depends(Signer.as_form)):
+    images = sorted(os.listdir(IMAGES))
+    log, pass1 = sign.log, sign.pass1
+    if base.get_name(log) and base.get_pass(log, pass1):
+        user_id = log
+        return templates.TemplateResponse("profile.html", {"request": request, 'images': images})
+    else:
+        return templates.TemplateResponse("sign.html", {"request": request})
 '''--------------------------------------------------------------------------------------------'''
 
 '''--------------------------------------------------------------------------------------------'''
@@ -89,7 +138,6 @@ async def upload_photo(request: Request, file: UploadFile = File(...)):
             pass
         else:
             os.remove(f'{IMAGES}{images[-1]}')
-
         print('1')
         return templates.TemplateResponse("main.html", {"request": request})
     except Exception as e:
